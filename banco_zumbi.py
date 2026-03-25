@@ -1,5 +1,6 @@
 nome = input ('qual seu nome?')
 print (f'olá {nome}, seu saldo: R$: 0,00')
+from datetime import datetime
 extrato = []
 saldo = 0
 escolha = ''
@@ -13,7 +14,8 @@ while escolha != '4':
         valor = float(input ('valor:'))
         if valor > 0:
             saldo = saldo + valor
-            extrato.append(f'depósito R$:{valor:.2f}')
+            agora = datetime.now().strftime('%d/%m/%Y %H:%M')
+            extrato.append(f'depósito R$:{valor:.2f} - {agora}')
             print (f'valor depositado R$:{valor:.2f}')
         else:
             print ("valor invalido!")
@@ -22,7 +24,8 @@ while escolha != '4':
         if valor > 0:
             if valor <= saldo:
                 saldo = saldo - valor
-                extrato.append (f'saque RS{valor:.2f}')
+                agora = datetime.now().strftime('%d/%m/%Y %H:%M')
+                extrato.append (f'saque RS{valor:.2f} - {agora}')
                 print (f'Você sacou R$:{valor:.2f}')
             else:
                 print (f'saldo insuficiente.')
